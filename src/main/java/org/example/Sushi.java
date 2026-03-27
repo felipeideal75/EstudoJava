@@ -1,28 +1,55 @@
 package org.example;
-
-public class Sushi extends  Prato {
+public class Sushi{
+    private String nome;
     private int quantidadePecas;
+    private double precoUnitario;
 
+    public Sushi(String nome, int quantidadePecas, double precoUnitario){
+        setNome(nome);
+        setQuantidadePecas(quantidadePecas);
+        setPrecoUnitario(precoUnitario);
 
-public Sushi(String nome,double preco, int quantidadePecas){
-    super(nome, preco);
-    this.quantidadePecas = quantidadePecas;;
-
-}
-
-
+    }
     public double calcularTotal(){
-        return quantidadePecas * getPreco();
+        return quantidadePecas * precoUnitario;
     }
-public void setQuantidadePecas(int quantidadePecas) {
-    if (quantidadePecas < 0 ){
-        throw new IllegalArgumentException("peças não podem ser negativas");
+    //getter nome
+    public String getNome(){
+        return nome;
     }
-    this.quantidadePecas = quantidadePecas;
-}
-public int getQuantidadePecas(){
-    return quantidadePecas;
-}
+    //setter nome com validação
+    public void setNome(String nome){
+        if (nome == null || nome.trim().isEmpty()){
+            throw new IllegalArgumentException("NOME NÃO PODE SER VAZIO");
+        }
+        this.nome = nome;
+    }
+
+
+
+    //getter quantidade
+    public int getQuantidadePecas(){
+        return quantidadePecas;
+    }
+
+    public void setQuantidadePecas(int quantidadePecas){
+        if (quantidadePecas < 0){
+           throw new  IllegalArgumentException("quantidade não pode ser negativa");
+        }
+        this.quantidadePecas = quantidadePecas;
+    }
+
+
+    //getter preço
+    public double getPrecoUnitario(){
+        return precoUnitario;
+    }
+    public void setPrecoUnitario(double precoUnitario){
+        if (precoUnitario< 0){
+          throw new  IllegalArgumentException("preço não pode ser negativo");
+        }
+        this.precoUnitario = precoUnitario;
+    }
 
 
 
